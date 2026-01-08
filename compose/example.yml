@@ -1,0 +1,10 @@
+services:
+    example:
+        build:
+            context: ../shared/example/
+        image: example
+        networks:
+            - subnet
+        ports:
+            - "8080:8080"
+        restart: unless-stopped

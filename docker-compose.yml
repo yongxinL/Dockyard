@@ -1,0 +1,9 @@
+############### NETWORKS ###############
+networks:
+    subnet:
+        driver: bridge
+
+############### SERVICES ###############
+include:
+    ## Core Services
+    - compose/example.yml
