@@ -254,3 +254,4 @@ replay_pid*
 *.pem
 *.pfx
 *.crt
+acme.json

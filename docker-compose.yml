@@ -14,3 +14,4 @@ include:
 
     # --> Web applications
     - compose/wordpress.yml
+    - compose/gitea.yml
