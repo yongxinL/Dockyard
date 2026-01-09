@@ -17,6 +17,7 @@ fi
 
 ENV_FILE=".env"
 ENV_EXAMPLE_FILE=".env.example"
+
 cd "$PROJECT_ROOT"
 if [ ! -f "$ENV_EXAMPLE_FILE" ]; then
     echo "Error: $ENV_EXAMPLE_FILE not found. Please ensure the example file exists."
@@ -39,14 +40,14 @@ echo "Generating and injecting secrets into $ENV_FILE..."
 
 # Generate secrets
 # Generate an 18-character alphanumeric password for the main PostgreSQL user
-PGRSQL_PASS=$(openssl rand -hex 16 | head -c 18)
+SQLDB_PASS=$(openssl rand -hex 16 | head -c 18)
 
 # Use a temporary file for sed compatibility between GNU and BSD (macOS)
 # The sed command replaces placeholders. Using a different delimiter like '|'
 # avoids issues if generated secrets contain the default '/' character.
 
 sed -i.bak \
-    -e "s|<YOUR_STRONG_PASSWORD>|${PGRSQL_PASS}|g" \
+    -e "s|<YOUR_STRONG_PASSWORD>|${SQLDB_PASS}|g" \
     "$ENV_FILE" && rm "${ENV_FILE}.bak"
 
 chmod 600 "$ENV_FILE"

@@ -5,5 +5,12 @@ networks:
 
 ############### SERVICES ###############
 include:
-    ## Core Services
-    - compose/example.yml
+    # --> database services
+    - compose/mariadb.yml
+    - compose/postgresql.yml
+
+    # --> infrastructure
+    - compose/traefik.yml
+
+    # --> Web applications
+    - compose/wordpress.yml

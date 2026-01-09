@@ -249,3 +249,8 @@ replay_pid*
 /fuel/app/cache/*/*
 /fuel/app/config/crypt.php
 
+# ---> private self-signed certificates
+*.key
+*.pem
+*.pfx
+*.crt

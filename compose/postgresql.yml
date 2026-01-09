@@ -1,0 +1,22 @@
+services:
+    # PostgreSQL: Centralized Database Services
+    postgres:
+        build:
+            context: ../shared/postgresql/
+        environment:
+            - POSTGRES_USER=${SQLDB_USER}
+            - POSTGRES_PASSWORD=${SQLDB_PASS}
+            - POSTGRES_DB_LIST=${PGRSQL_DBLIST:-defaultdb}
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -d $${PGRSQL_DBLIST%%,*} -U $${PGRSQL_USER}"]
+            start_period: 20s
+            interval: 30s
+            retries: 5
+            timeout: 5s
+        image: postgres
+        networks:
+            - subnet
+        restart: unless-stopped
+        shm_size: 128mb
+        volumes:
+            - ${APPS_DATA}/databases/postgres:/var/lib/postgresql/data

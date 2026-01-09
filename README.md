@@ -13,12 +13,12 @@ Instead of half-remembered ports, mystery containers, and _“what was this for 
 ```
 Dockyard/
 ├── compose/                 # Service definitions
-│   └── example.yml          # Example service configuration
+│   ├── mysql.yml            # MySQL database
+│   ├── traefik.yml          # Traefik reverse proxy
+│   └── wordpress.yml        # WordPress service
 ├── scripts/                 # Setup and utility scripts
 │   └── setup.sh             # Environment setup script
 ├── shared/                  # Shared resources
-│   └── example/
-│       └── Dockerfile       # Base Dockerfile for services
 ├── .env.example             # Environment variables template
 ├── docker-compose.yml       # Main Docker Compose configuration
 └── README.md                # This file
@@ -45,7 +45,7 @@ Dockyard/
    This will create a `.env` file from `.env.example` with generated secrets.
 
 3. **Customize environment variables:**
-   Edit the `.env` file to match your environment (timezone, domain, data paths, etc.).
+   Edit the `.env` file to match your environment (timezone, domain, data paths, ACME email for SSL, etc.).
 
 4. **Start the services:**
    ```bash
@@ -54,7 +54,8 @@ Dockyard/
 
 ## Usage
 
-- The starter service runs on port 8000 (mapped from container port 9000).
+- **Traefik Dashboard**: Access at `http://localhost:8080` (insecure API enabled for demo).
+- **WordPress**: Access at `https://wordpress.${DOMAIN_NAME}` after setup (complete WordPress installation wizard).
 - Add new services by creating new `.yml` files in the `compose/` directory and including them in `docker-compose.yml`.
 - Customize service Dockerfiles in the `shared/` directory.
 
