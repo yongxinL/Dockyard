@@ -4,8 +4,6 @@ services:
         build:
             context: ../shared/gitea/
         environment:
-            - USER_UID=1000
-            - USER_GID=1000
             # Using MySQL for databases
             - GITEA__database__DB_TYPE=mysql
             - GITEA__database__HOST=${MySQL_HOST}:${MySQL_PORT}
@@ -43,6 +41,6 @@ services:
         restart: unless-stopped
         volumes:
             - /etc/localtime:/etc/localtime:ro
-            - ${APPS_DATA}/webapps/repobukt/data:/var/lib/gitea
-            - ${APPS_DATA}/webapps/repobukt/config:/etc/gitea
-            - ${APPS_DATA}/webapps/repobukt/custom:/var/lib/custom
+            - ${APPS_DATA}/webapps/codexrepo/data:/var/lib/gitea
+            - ${APPS_DATA}/webapps/codexrepo/config:/etc/gitea
+            - ${APPS_DATA}/webapps/codexrepo/custom:/var/lib/custom
