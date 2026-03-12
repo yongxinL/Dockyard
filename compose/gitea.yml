@@ -34,6 +34,8 @@ services:
             - "traefik.http.services.gitea.loadbalancer.server.port=3000"
             # Enable TLS on this router
             - "traefik.http.routers.gitea.tls=true"
+            # Use Let's Encrypt for certificate management or Self-signed certificate
+            - "traefik.http.routers.gitea.tls.certresolver=letsencrypt"
         networks:
             - subnet
         ports:
