@@ -7,7 +7,8 @@ networks:
 include:
     # --> database services
     - compose/mariadb.yml
-    - compose/postgresql.yml
+    - compose/pgsqldb.yml
+    - compose/ollamasvc.yml
 
     # --> infrastructure
     - compose/traefik.yml
@@ -15,3 +16,4 @@ include:
     # --> Web applications
     - compose/wordpress.yml
     - compose/gitea.yml
+    - compose/openmaic.yml

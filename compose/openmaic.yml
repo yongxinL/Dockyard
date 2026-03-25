@@ -1,0 +1,38 @@
+services:
+    # OpenMAIC: Open multi-agent Interactive classroom
+    # https://github.com/THU-MAIC/OpenMAIC
+    openmaic:
+        build:
+            context: ../shared/openmaic/
+            dockerfile: Dockerfile
+            args:
+                OPENMAIC_ZIP_URL: https://github.com/THU-MAIC/OpenMAIC/archive/refs/heads/main.zip
+        env_file:
+            - ../shared/openmaic/env.local
+        image: openmaic
+        labels:
+            # Enable Traefik for this container
+            - "traefik.enable=true"
+            # Use the 'websecure' (HTTPS) entry point
+            - "traefik.http.routers.openmaic.entrypoints=websecure"
+            # Match incoming requests on a specific hostname
+            - "traefik.http.routers.openmaic.rule=Host(`${OIC_DOMAIN}`)"
+            # Assign the router to a named Traefik service
+            - "traefik.http.routers.openmaic.service=openmaic"
+            # Define the internal container port for routing
+            - "traefik.http.services.openmaic.loadbalancer.server.port=3000"
+            # Enable TLS on this router
+            - "traefik.http.routers.openmaic.tls=true"
+            # Use Let's Encrypt for certificate management or Self-signed certificate
+            - "traefik.http.routers.openmaic.tls.certresolver=letsencrypt"
+            # uncomment for basicAuth
+            # all dollar signs in hte hash need to be double for escaping.
+            # to create a user:password pair, the following command can be used
+            # echo $(htpasswd -nb user password) | sed -e s/\\$/\\$\\$/g
+            - "traefik.http.routers.openmaic.middlewares=openmaic-auth"
+            - "traefik.http.middlewares.openmaic-auth.basicauth.users=Captain.Li:$$apr1$$220OzBNK$$MRhHtvmu9mCRh30EFZU4S1"
+        networks:
+            - subnet
+        restart: unless-stopped
+        volumes:
+            - ${APPS_DATA}/webapps/openmaic:/app/data

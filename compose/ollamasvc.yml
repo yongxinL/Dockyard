@@ -1,0 +1,12 @@
+services:
+    ollamasvc:
+        build:
+            context: ../shared/ollama/
+        image: ollamasvc
+        networks:
+            - subnet
+        ports:
+            - 11434:11434
+        restart: unless-stopped
+        volumes:
+            - ${APPS_DATA}/databases/ollamasvc:/root/.ollama
