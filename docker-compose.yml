@@ -11,3 +11,6 @@ include:
 
     # --> infrastructure
     - compose/traefik.yml
+
+    # --> Web applications
+    - compose/gitea.yml

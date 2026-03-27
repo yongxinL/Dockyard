@@ -246,3 +246,10 @@ Icon[]
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# ACME and certificates
+*.key
+*.pem
+*.pfx
+*.crt
+acme.json
