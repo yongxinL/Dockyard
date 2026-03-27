@@ -8,3 +8,6 @@ include:
     # --> database services
     - compose/mariadb.yml
     - compose/pgsqldb.yml
+
+    # --> infrastructure
+    - compose/traefik.yml
