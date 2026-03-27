@@ -1,3 +1,7 @@
+## Update identity (in Command line/Terminal):
+# git config --global user.name "George.Li"
+# git config --global user.email "yongxinL@outlook.com"
+
 # ---> VisualStudioCode
 .vscode/*
 !.vscode/settings.json
@@ -217,3 +221,28 @@ replay_pid*
 /fuel/app/cache/*/*
 /fuel/app/config/crypt.php
 
+# macOS 
+.DS_Store
+__MACOSX/
+.AppleDouble
+.LSOverride
+Icon[]
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
