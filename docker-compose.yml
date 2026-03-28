@@ -13,4 +13,5 @@ include:
     - compose/traefik.yml
 
     # --> Web applications
+    - compose/wordpress.yml
     - compose/gitea.yml
