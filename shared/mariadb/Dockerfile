@@ -1,6 +1,6 @@
 # https://github.com/MariaDB/mariadb-docker
 FROM mariadb:11.8
-LABEL maintainer "https://github.com/yongxinL/Dockyard"
+LABEL org.opencontainers.image.authors="yongxinL@outlook.com"
 
 # Add your setup here
 # Example: RUN

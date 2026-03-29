@@ -1,6 +1,6 @@
 # https://github.com/docker-library/wordpress
 FROM wordpress:fpm-alpine
-LABEL maintainer="https://github.com/yongxinL/Dockyard"
+LABEL org.opencontainers.image.authors="yongxinL@outlook.com"
 
 # 1. Install system dependencies (Nginx, supervisor, and core tools)
 RUN apk add --no-cache \
