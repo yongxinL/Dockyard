@@ -13,5 +13,6 @@ include:
     - compose/traefik.yml
 
     # --> Web applications
+    - compose/authentik.yml
     - compose/wordpress.yml
     - compose/gitea.yml

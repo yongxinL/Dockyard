@@ -253,3 +253,4 @@ Temporary Items
 *.pfx
 *.crt
 acme.json
+certificates.yml
